@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     flexGrow: 0,
     backgroundColor: theme.colors.primary,
     padding: 5,
+    marginTop: 3,
     borderRadius: 3
   },
   ratingBox: {
