@@ -14,3 +14,12 @@ export const GET_REPOSITORIES = gql`
   }
   ${REPOSITORY_INFO}
 `;
+
+export const GET_ME = gql`
+  query getMe {
+    me {
+      id
+      username
+    }
+  }
+`;
