@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
   flexItemDesc: {
     width: 0,
     flexGrow: 1,
-    marginLeft: 'gutter',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
     paddingLeft: 30,
