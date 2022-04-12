@@ -3,11 +3,11 @@ import { View, StyleSheet, ScrollView } from 'react-native';
 import { Link } from 'react-router-native';
 import { useQuery, useApolloClient } from '@apollo/client';
 
-import Text from './Text';
-import theme from '../theme';
+import Text from '../Text';
+import theme from '../../theme';
 import Constants from 'expo-constants';
-import { GET_ME } from '../graphql/queries';
-import AuthStorageContext from '../contexts/AuthStorageContext';
+import { GET_ME } from '../../graphql/queries';
+import AuthStorageContext from '../../contexts/AuthStorageContext';
 
 const styles = StyleSheet.create({
   container: {

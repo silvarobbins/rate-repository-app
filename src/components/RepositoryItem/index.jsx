@@ -1,6 +1,6 @@
 import { View, StyleSheet, Image } from 'react-native';
-import theme from '../theme';
-import Text from './Text';
+import theme from '../../theme';
+import Text from '../Text';
 
 const styles = StyleSheet.create({
   flexContainer: {
@@ -62,7 +62,7 @@ const RepositoryItem = ({repository}) => {
 
   return(
     
-    <View style={styles.flexContainer}>
+    <View style={styles.flexContainer} testID="repositoryItem">
 
       <View style={styles.flexItemImage}> 
         <Image
