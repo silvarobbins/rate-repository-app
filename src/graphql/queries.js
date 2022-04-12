@@ -8,8 +8,17 @@ export const GET_REPOSITORIES = gql`
         node {
           ...RepositoryInfo
         }
-        cursor
       }
+    }
+  }
+  ${REPOSITORY_INFO}
+`;
+
+export const GET_REPOSITORY = gql`
+  query Repository ($id: ID!) {
+    repository(id: $id) {
+      url
+      ...RepositoryInfo
     }
   }
   ${REPOSITORY_INFO}

@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
 const ItemSeparator = () => <View style={styles.separator} />;
 
 const renderItem = ({ item }) => (
-  <RepositoryItem repository={item}/>
+  <RepositoryItem repository={item} showDetails={false}/>
 );
 
 const RepositoryListContainer = ({repositories}) => {
@@ -20,9 +20,9 @@ const RepositoryListContainer = ({repositories}) => {
 
   return(
     <FlatList
-    data={repositoryNodes}
-    ItemSeparatorComponent={ItemSeparator}
-    renderItem={renderItem}
+      data={repositoryNodes}
+      ItemSeparatorComponent={ItemSeparator}
+      renderItem={renderItem}
     />
   )
 }

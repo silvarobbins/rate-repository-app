@@ -1,6 +1,10 @@
-import { View, StyleSheet, Image } from 'react-native';
-import theme from '../../theme';
+import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { Link } from 'react-router-native';
+import * as Linking from "expo-linking";
+
+import Button from '../Button';
 import Text from '../Text';
+import theme from '../../theme';
 
 const styles = StyleSheet.create({
   flexContainer: {
@@ -48,7 +52,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const RepositoryItem = ({repository}) => {
+const RepositoryItem = ({repository, showDetails}) => {
 
   const formatThousands = (value) => {
     if (value >= 1000) {
@@ -60,45 +64,53 @@ const RepositoryItem = ({repository}) => {
     }
   }
 
+  const openGithub = () => {
+    Linking.openURL(repository.url);
+  };
+
   return(
-    
-    <View style={styles.flexContainer} testID="repositoryItem">
 
-      <View style={styles.flexItemImage}> 
-        <Image
-          style={styles.avatar}
-          source={{uri: repository.ownerAvatarUrl}}
-        />
+    <Link to={`/repository/${repository.id}`} component={TouchableOpacity}>
+      <View style={styles.flexContainer} testID="repositoryItem">
 
-        <View style={styles.flexItemDesc}>
-          <Text fontWeight='bold'>{repository.fullName}</Text>
-          <Text color='textSecondary' >{repository.description}</Text>
-          <View style={styles.languageBox}>
-            <Text color='white'>{repository.language}</Text>
+        <View style={styles.flexItemImage}> 
+          <Image
+            style={styles.avatar}
+            source={{uri: repository.ownerAvatarUrl}}
+          />
+
+          <View style={styles.flexItemDesc}>
+            <Text fontWeight='bold'>{repository.fullName}</Text>
+            <Text color='textSecondary' >{repository.description}</Text>
+            <View style={styles.languageBox}>
+              <Text color='white'>{repository.language}</Text>
+            </View>
           </View>
         </View>
-      </View>
 
-      <View style={styles.flexItemRates}>
-        <View style={styles.ratingBox}>
-          <Text fontWeight={'bold'}>{formatThousands(repository.stargazersCount)}</Text>
-          <Text>Stars</Text>
+        <View style={styles.flexItemRates}>
+          <View style={styles.ratingBox}>
+            <Text fontWeight={'bold'}>{formatThousands(repository.stargazersCount)}</Text>
+            <Text>Stars</Text>
+          </View>
+          <View style={styles.ratingBox}>
+            <Text fontWeight={'bold'}>{formatThousands(repository.forksCount)}</Text>
+            <Text>Forks</Text>
+          </View>
+          <View style={styles.ratingBox}>
+            <Text fontWeight={'bold'}>{formatThousands(repository.reviewCount)}</Text>
+            <Text>Reviews</Text>
+          </View>
+          <View style={styles.ratingBox}>
+            <Text fontWeight={'bold'}>{formatThousands(repository.ratingAverage)}</Text>
+            <Text>Rating</Text>
+          </View>
         </View>
-        <View style={styles.ratingBox}>
-          <Text fontWeight={'bold'}>{formatThousands(repository.forksCount)}</Text>
-          <Text>Forks</Text>
-        </View>
-        <View style={styles.ratingBox}>
-          <Text fontWeight={'bold'}>{formatThousands(repository.reviewCount)}</Text>
-          <Text>Reviews</Text>
-        </View>
-        <View style={styles.ratingBox}>
-          <Text fontWeight={'bold'}>{formatThousands(repository.ratingAverage)}</Text>
-          <Text>Rating</Text>
-        </View>
+        {showDetails && (
+          <Button onClick={openGithub} text={'Open in GitHub'}/>
+        )}
       </View>
-
-    </View>
+    </Link>
   )
 };
 
