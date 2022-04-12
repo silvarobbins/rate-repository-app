@@ -12,8 +12,11 @@ const useRepository = (variables) => {
   );
 
   const repository = data?.repository;
+  const reviews = data?.repository.reviews.edges;
+
   return {
     repository,
+    reviews,
     error,
     loading,
     ...result,

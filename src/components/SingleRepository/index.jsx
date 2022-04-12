@@ -1,22 +1,20 @@
 import { useParams } from "react-router-native";
 
 import useRepository from '../../hooks/useRepository';
-import RepositoryItem from '../RepositoryItem';
+import SingleRepositoryViewContainer from './SingleRepositoryViewContainer'
 
 
 const SingleRepositoryView = () => {
   const { id } = useParams();
 
-  const { repository } = useRepository({ id });
+  const { repository, reviews } = useRepository({ id });
 
   console.log('repo:', repository)
 
-  if (!repository) {
-    return null
-  }
-  return (
-    <RepositoryItem repository={repository} showDetails={true}/>
+  return(
+    <SingleRepositoryViewContainer repository={repository} reviews={reviews}/>
   )
+
 };
 
 export default SingleRepositoryView;
