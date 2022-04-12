@@ -10,6 +10,7 @@ const useRepositories = (variables) => {
       variables,
     }
   );
+  console.log('data:', data)
 
   const handleFetchMore = () => {
     const canFetchMore =

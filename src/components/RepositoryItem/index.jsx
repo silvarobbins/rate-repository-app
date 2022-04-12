@@ -93,7 +93,7 @@ const RepositoryItem = ({repository}) => {
           <Text>Reviews</Text>
         </View>
         <View style={styles.ratingBox}>
-          <Text fontWeight={'bold'}>{repository.ratingAverage}</Text>
+          <Text fontWeight={'bold'}>{formatThousands(repository.ratingAverage)}</Text>
           <Text>Rating</Text>
         </View>
       </View>

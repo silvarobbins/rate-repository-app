@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react-native';
-import RepositoryList from '../../components/RepositoryList';
 import RepositoryListContainer from '../../components/RepositoryList/RepositoryListContainer';
+
+
 
 describe('RepositoryList', () => {
   describe('RepositoryListContainer', () => {
@@ -48,14 +49,45 @@ describe('RepositoryList', () => {
         ],
       };
 
-      const { debug, getByTestId } = render(<RepositoryListContainer repositories={repositories} />);
+      const formatThousands = (value) => {
+        if (value >= 1000) {
+          const newVal = value/1000
+          return newVal.toFixed(1) + 'k'
+        }
+        else {
+          return value
+        }
+      }
 
+      const { getAllByTestId } = render(<RepositoryListContainer repositories={repositories} />);
+
+      const firstRepo = repositories.edges[0].node;
+      const secondRepo = repositories.edges[1].node;
+    
       const repositoryItems = getAllByTestId('repositoryItem');
       const [firstRepositoryItem, secondRepositoryItem] = repositoryItems;
-      console.log(repositoryItems)
-      debug();
 
-      expect(getByText('Hello Kalle!')).toBeDefined();
+      expect(firstRepositoryItem).toHaveTextContent(firstRepo.fullName);
+      expect(secondRepositoryItem).toHaveTextContent(secondRepo.fullName);
+
+      expect(firstRepositoryItem).toHaveTextContent(firstRepo.description);
+      expect(secondRepositoryItem).toHaveTextContent(secondRepo.description);
+
+      expect(firstRepositoryItem).toHaveTextContent(firstRepo.language);
+      expect(secondRepositoryItem).toHaveTextContent(secondRepo.language);
+
+      expect(firstRepositoryItem).toHaveTextContent(formatThousands(firstRepo.forksCount));
+      expect(secondRepositoryItem).toHaveTextContent(formatThousands(secondRepo.forksCount));
+
+      expect(firstRepositoryItem).toHaveTextContent(formatThousands(firstRepo.stargazersCount));
+      expect(secondRepositoryItem).toHaveTextContent(formatThousands(secondRepo.forksCount));
+
+      expect(firstRepositoryItem).toHaveTextContent(formatThousands(firstRepo.ratingAverage));
+      expect(secondRepositoryItem).toHaveTextContent(formatThousands(secondRepo.forksCount));
+
+
+      expect(firstRepositoryItem).toHaveTextContent(formatThousands(firstRepo.reviewCount));
+      expect(secondRepositoryItem).toHaveTextContent(formatThousands(secondRepo.forksCount));
     });
   });
 });
