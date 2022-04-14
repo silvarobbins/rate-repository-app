@@ -16,8 +16,12 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.textPrimary
   },
   text: {
-    padding: 5,
-    color: '#FFFFFF'
+    padding: 10,
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+    borderLeftWidth: 2,
+    borderLeftColor: 'white',
+    height: '100%'
   }
 });
 

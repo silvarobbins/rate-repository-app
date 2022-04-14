@@ -14,6 +14,15 @@ export const REPOSITORY_INFO = gql`
   }
 `;
 
+
+export const PAGE_INFORMATION = gql`
+  fragment PageInformation on PageInfo {
+    hasNextPage
+    startCursor
+    endCursor
+  }
+`;
+
 export const REVIEW_INFO = gql`
   fragment ReviewInfo on Review {
     id

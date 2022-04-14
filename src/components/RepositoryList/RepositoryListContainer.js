@@ -13,16 +13,19 @@ const renderItem = ({ item }) => (
   <RepositoryItem repository={item} showDetails={false}/>
 );
 
-const RepositoryListContainer = ({repositories}) => {
+const RepositoryListContainer = ({repositories, onEndReach}) => {
   const repositoryNodes = repositories
     ? repositories.edges.map(edge => edge.node)
     : [];
+  
 
   return(
     <FlatList
       data={repositoryNodes}
       ItemSeparatorComponent={ItemSeparator}
       renderItem={renderItem}
+      onEndReached={onEndReach}
+      onEndReachedThreshold={0.1}
     />
   )
 }

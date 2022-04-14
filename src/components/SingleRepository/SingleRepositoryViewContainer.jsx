@@ -15,12 +15,11 @@ const renderItem = ({ item }) => (
   <ReviewItem review={item}/>
 );
 
-const SingleRepositoryViewContainer = ({repository, reviews}) => {
+const SingleRepositoryViewContainer = ({repository, reviews, onEndReach}) => {
   const reviewNodes = reviews
     ? reviews.map(edge => edge.node)
     : [];
-
-  console.log(reviewNodes)
+    
   return(
     <>
       <RepositoryInfo repository={repository}/>
@@ -28,6 +27,8 @@ const SingleRepositoryViewContainer = ({repository, reviews}) => {
         data={reviewNodes}
         ItemSeparatorComponent={ItemSeparator}
         renderItem={renderItem}
+        onEndReached={onEndReach}
+        onEndReachedThreshold={0.1}
       />
     </>
   )

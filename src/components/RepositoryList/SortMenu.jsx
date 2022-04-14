@@ -10,7 +10,8 @@ const styles = StyleSheet.create({
   dropdown: {
     flexDirection: "row",
     marginVertical: 20,
-    flex: 1,
+    flex: "1 1 auto",
+    flexShrink: 0,
     zIndex: 10,
   },
   menu: {
