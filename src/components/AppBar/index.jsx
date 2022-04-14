@@ -43,10 +43,18 @@ const AppBar = () => {
             <Text style={styles.text}>Sign out</Text>
           </Link>
         ) : (
-          <Link to={'/signin'}>
-            <Text style={styles.text}>Sign in</Text>
-          </Link>
+          <>
+            <Link to={'/signin'}>
+              <Text style={styles.text}>Sign in</Text>
+            </Link>
+            <Link to={'/signup'}>
+              <Text style={styles.text}>Sign up</Text>
+            </Link>
+          </>
         )}
+        <Link to={'/create-review'}>
+          <Text style={styles.text}>Create a review</Text>
+        </Link>
       </ScrollView>
     </View>
   )
