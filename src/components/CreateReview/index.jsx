@@ -14,7 +14,7 @@ const CreateReview = () => {
     const parsedRating = +rating;
 
     try {
-      const data = await createReview({
+      const { data } = await createReview({
         variables: {
           review: {
             ownerName :owner, 
@@ -25,8 +25,9 @@ const CreateReview = () => {
         }
       });
 
-      console.log(data)
-      navigate(`/`, { replace: true });
+      if (data?.createReview) {
+        navigate(`/`, { replace: true });
+      }
     } catch (e) {
       console.log(e);
     }

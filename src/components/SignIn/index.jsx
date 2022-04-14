@@ -14,7 +14,9 @@ const SignIn = () => {
     try {
       const data = await signIn({ username, password });
       console.log(data)
-      navigate("/", { replace: true });
+      if (data?.authenticate) {
+        navigate("/", { replace: true });
+      }
     } catch (e) {
       console.log(e);
     }
