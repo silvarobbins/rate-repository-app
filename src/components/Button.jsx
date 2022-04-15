@@ -3,7 +3,7 @@ import { Text, Pressable, StyleSheet } from 'react-native';
 import theme from '../theme';
 
 const styles = StyleSheet.create({
-  button: {
+  basicButton: {
     display: 'flex',
     width: '100%',
     backgroundColor: theme.colors.primary,
@@ -14,13 +14,18 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     margin: 5,
-    color: 'white'
+    color: 'white',
+    fontWeight: 'bold'
   }
 })
 
-const Button = ({ onClick, text }) => {
+const Button = ({ style, onClick, text, ...props }) => {
+  const buttonStyle = [
+    styles.basicButton,
+    style,
+  ];
   return(
-  <Pressable onPress={onClick} style={styles.button}>
+  <Pressable onPress={onClick} style={buttonStyle} {...props}>
     <Text style={styles.buttonText}>{text}</Text>
   </Pressable>)
 };

@@ -7,7 +7,7 @@ import SingleRepositoryViewContainer from './SingleRepositoryViewContainer'
 const SingleRepositoryView = () => {
   const { id } = useParams();
 
-  const { repository, reviews, fetchMore } = useRepository({ first: 3, id });
+  const { repository, reviews, fetchMore } = useRepository({ first: 5, id });
 
   const onEndReach = () => {
     fetchMore();

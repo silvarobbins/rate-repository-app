@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     borderLeftWidth: 2,
     borderLeftColor: 'white',
-    height: '100%'
   }
 });
 
@@ -43,9 +42,14 @@ const AppBar = () => {
           <Text style={styles.text}>Repositories</Text>
         </Link>
         {data?.me ? (
-          <Link onPress={logout} to={'/signin'}>
-            <Text style={styles.text}>Sign out</Text>
-          </Link>
+          <>
+            <Link onPress={logout} to={'/signin'}>
+              <Text style={styles.text}>Sign out</Text>
+            </Link>
+            <Link to={'/myreviews'}>
+              <Text style={styles.text}>My reviews</Text>
+            </Link>
+          </>
         ) : (
           <>
             <Link to={'/signin'}>

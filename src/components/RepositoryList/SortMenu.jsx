@@ -1,4 +1,4 @@
-import { View, StyleSheet, TouchableOpacity } from "react-native-web"
+import { View, StyleSheet, TouchableOpacity } from "react-native"
 import React, { useState } from "react"
 import { Menu, Divider, Provider } from 'react-native-paper'
 import { AntDesign } from '@expo/vector-icons'; 
@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
   dropdown: {
     flexDirection: "row",
     marginVertical: 20,
-    flex: "1 1 auto",
     flexShrink: 0,
     zIndex: 10,
   },

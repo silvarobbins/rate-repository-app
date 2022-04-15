@@ -11,7 +11,10 @@ const useReviews = (variables) => {
     }
   );
 
-  const reviews = data?.authorizedUser.reviews.edges;
+  console.log(data)
+
+  const reviews = data?.me.reviews.edges;
+
   return {
     reviews,
     error,
